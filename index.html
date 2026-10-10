@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGA - Inscripción de Alumnos</title>
+    <!-- Tailwind CSS para los estilos rápidos y limpios sin necesidad de otro archivo -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex h-screen">
+
+    <!-- Menú Lateral (Sidebar) -->
+    <aside class="w-64 bg-slate-800 text-white flex flex-col">
+        <div class="h-16 flex items-center justify-center border-b border-slate-700">
+            <h1 class="text-2xl font-bold">SIGA V1.0</h1>
+        </div>
+        <nav class="flex-1 px-4 py-6 space-y-2">
+            <a href="#" class="block px-4 py-2 bg-blue-600 rounded-md">Inscripciones</a>
+            <a href="#" class="block px-4 py-2 hover:bg-slate-700 rounded-md">Alumnos</a>
+            <a href="#" class="block px-4 py-2 hover:bg-slate-700 rounded-md">Configuración</a>
+        </nav>
+    </aside>
+
+    <!-- Contenido Principal -->
+    <main class="flex-1 flex flex-col overflow-hidden">
+        <!-- Header -->
+        <header class="h-16 bg-white shadow-sm flex items-center px-6 justify-between">
+            <h2 class="text-xl font-semibold text-gray-800">Panel de Inscripción</h2>
+            <div class="text-sm text-gray-500">Desarrollo: feature/estudiantes</div>
+        </header>
+
+        <!-- Área de trabajo -->
+        <div class="flex-1 overflow-auto p-6">
+            
+            <!-- Tarjetas de estadísticas -->
+            <div class="grid grid-cols-3 gap-6 mb-6">
+                <div class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-blue-500">
+                    <h3 class="text-gray-500 text-sm">Total Inscritos</h3>
+                    <p class="text-2xl font-bold" id="total-count">0</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-green-500">
+                    <h3 class="text-gray-500 text-sm">Nuevos Hoy</h3>
+                    <p class="text-2xl font-bold">0</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-6">
+                <!-- Formulario -->
+                <div class="col-span-1 bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="font-bold text-gray-700 mb-4">Nueva Inscripción</h3>
+                    <form id="enrollment-form" class="space-y-4">
+                        <div>
+                            <label class="block text-sm text-gray-600">Nombre del Alumno</label>
+                            <input type="text" id="name" required class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-600">Registro (Código)</label>
+                            <input type="text" id="code" required class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-600">Carrera</label>
+                            <select id="career" class="mt-1 block w-full border border-gray-300 rounded-md p-2 bg-white">
+                                <option>Ingeniería de Sistemas</option>
+                                <option>Ingeniería Informática</option>
+                                <option>Redes y Telecomunicaciones</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded hover:bg-blue-700 transition">
+                            Inscribir Alumno
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Tabla de registros -->
+                <div class="col-span-2 bg-white rounded-lg shadow-sm overflow-hidden">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Registro</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Nombre</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Carrera</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody id="student-table" class="bg-white divide-y divide-gray-200">
+                            <!-- Los datos se insertarán aquí con JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Notificación tipo Toast (Oculta por defecto) -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-green-500 text-white px-6 py-3 rounded shadow-lg hidden transition-opacity duration-300">
+        Alumno inscrito exitosamente.
+    </div>
+
+    <!-- Script de funcionalidad de la interfaz -->
+    <script>
+        const form = document.getElementById('enrollment-form');
+        const tableBody = document.getElementById('student-table');
+        const totalCount = document.getElementById('total-count');
+        const toast = document.getElementById('toast');
+
+        // Base de datos simulada en memoria (Para reemplazar con SQLite después)
+        let students = [
+            { code: '2023001', name: 'Ana García', career: 'Ingeniería de Sistemas' }
+        ];
+
+        // Función para renderizar la tabla
+        function updateTable() {
+            tableBody.innerHTML = '';
+            students.forEach(student => {
+                const row = `
+                    <tr>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${student.code}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${student.name}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${student.career}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Inscrito</span>
+                        </td>
+                    </tr>
+                `;
+                tableBody.insertAdjacentHTML('beforeend', row);
+            });
+            totalCount.textContent = students.length;
+        }
+
+        // Función para mostrar notificación
+        function showToast() {
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+
+        // Evento al enviar el formulario
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const newStudent = {
+                code: document.getElementById('code').value,
+                name: document.getElementById('name').value,
+                career: document.getElementById('career').value
+            };
+
+            students.push(newStudent);
+            updateTable();
+            showToast();
+            form.reset();
+        });
+
+        // Renderizar tabla inicial
+        updateTable();
+    </script>
+</body>
+</html>
