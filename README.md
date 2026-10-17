@@ -24,6 +24,7 @@ El sistema **SIGA** es una plataforma orientada a la administración universitar
 ```text
 SIGA-Configuracion/
 ├── .gitignore          # Exclusión de archivos de BD y temporales
+├── docker-compose.yml  # Orquestación del servicio Jenkins con volúmenes
 ├── Jenkinsfile         # Pipeline automatizado de CI/CD para Jenkins
 ├── README.md           # Guía de instalación, uso y arquitectura
 ├── BITACORA.md         # Registro de trabajo, ramas, conflictos y cambios
@@ -48,9 +49,17 @@ No requiere servidores complejos para la interfaz visual:
 
 ## 4. Guía para Arrancar y Configurar Jenkins
 
-### 4.1. Arrancar el Contenedor de Jenkins con Docker
+### 4.1. Arrancar Jenkins con Docker Compose (Recomendado)
 
-Asegúrate de tener Docker Desktop iniciado y ejecuta en PowerShell:
+Solo debes ejecutar en la raíz del proyecto:
+
+```powershell
+docker compose up -d
+```
+
+*(Para detenerlo cuando termines: `docker compose down`)*
+
+### 4.2. Método Alternativo (Docker Run directo)
 
 ```powershell
 docker run -d -p 8080:8080 -p 50000:50000 --name jenkins-siga -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts

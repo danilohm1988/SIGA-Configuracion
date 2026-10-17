@@ -79,7 +79,7 @@ Esta bitácora documenta de manera trazable cada acción, commit, rama, resoluci
 - **Responsable:** César
 - **Objetivo:** Automatizar la validación del código y generación de artefactos tras cada commit.
 - **Acciones Realizadas:**
-  1. **Despliegue del Servidor:** Contenedor Docker oficial `jenkins/jenkins:lts` levantado bajo el nombre `jenkins-siga` en puertos `8080:8080` y `50000:50000`.
+  1. **Despliegue y Orquestación:** Creación de `docker-compose.yml` para orquestar el servicio `jenkins/jenkins:lts` con volúmenes persistentes y puertos `8080:8080`, facilitando el levantamiento con un único comando (`docker compose up -d`).
   2. **Diseño del Pipeline (`Jenkinsfile`):**
      - **Stage 1 (Verificación):** Comprobación del estado de Git y hash del último commit.
      - **Stage 2 (Validación de Archivos):** Verificación obligatoria de existencia de `index.html`, `schema.sql` y `.gitignore`.
@@ -95,9 +95,10 @@ Esta bitácora documenta de manera trazable cada acción, commit, rama, resoluci
 | :--- | :--- | :--- | :--- | :--- |
 | **CI-01** | Frontend Web | `index.html` | Danilo / César | Versión 2.0 (Estable) |
 | **CI-02** | Esquema Base de Datos | `schema.sql` | Danilo | Validado en SQLite |
-| **CI-03** | Pipeline Automatizado | `Jenkinsfile` | César | Activo / Funcional |
-| **CI-04** | Guía de Configuración | `README.md` | César | Documentado |
-| **CI-05** | Bitácora de PGCS | `BITACORA.md` | César | Auditado |
+| **CI-03** | Orquestación Docker | `docker-compose.yml` | César | Operativo (`docker compose up -d`) |
+| **CI-04** | Pipeline Automatizado | `Jenkinsfile` | César | Activo / Funcional |
+| **CI-05** | Guía de Configuración | `README.md` | Danilo, Eddi, César | Documentado |
+| **CI-06** | Bitácora de PGCS | `BITACORA.md` | Danilo, Eddi, César | Auditado |
 
 ---
 
