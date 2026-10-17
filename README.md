@@ -2,7 +2,7 @@
 
 Proyecto desarrollado para la asignatura **Gestión de la Configuración del Software (PGCS)** - 8.º Semestre, Ingeniería de Sistemas.  
 Docente: **Ing. Deiby Torrez Maldonado**  
-Equipo de Desarrollo: **Danilo, Eddi & Cesar**
+Equipo de Desarrollo: **Daniel, Cesar & Eddi**
 
 ---
 
@@ -24,8 +24,10 @@ El sistema **SIGA** es una plataforma orientada a la administración universitar
 ```text
 SIGA-Configuracion/
 ├── .gitignore          # Exclusión de archivos de BD y temporales
+├── CONTRIBUTING.md     # Convenciones de ramas, commits y PR
 ├── docker-compose.yml  # Orquestación del servicio Jenkins con volúmenes
 ├── Jenkinsfile         # Pipeline automatizado de CI/CD para Jenkins
+├── LICENSE             # Términos de uso y licencia MIT
 ├── README.md           # Guía de instalación, uso y arquitectura
 ├── BITACORA.md         # Registro de trabajo, ramas, conflictos y cambios
 ├── index.html          # Panel web interactivo del sistema SIGA

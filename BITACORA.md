@@ -3,7 +3,7 @@
 **Proyecto:** SIGA - Sistema Integrado de Gestión Académica  
 **Materia:** Gestión de la Configuración del Software · 8.º Semestre  
 **Docente:** Ing. Deiby Torrez Maldonado  
-**Equipo de Trabajo:** Danilo, Eddi & Cesar  
+**Equipo de Trabajo:** Daniel, Cesar & Eddi  
 **Repositorio GitHub:** [https://github.com/danilohm1988/SIGA-Configuracion](https://github.com/danilohm1988/SIGA-Configuracion)  
 
 ---
@@ -17,7 +17,7 @@ Esta bitácora documenta de manera trazable cada acción, commit, rama, resoluci
 ## 2. Registro Cronológico de Actividades
 
 ### Actividad 1: Preparación del Repositorio y Línea Base Inicial (LB-01)
-- **Responsable:** Danilo
+- **Responsable:** Daniel
 - **Acción:** Creación del repositorio `SIGA-Configuracion` en GitHub y clonación local.
 - **Ramas base creadas:** `main` (producción) y `develop` (integración).
 - **Commit inicial:** `c57e940 chore(init): primer commit del proyecto SIGA`.
@@ -26,7 +26,7 @@ Esta bitácora documenta de manera trazable cada acción, commit, rama, resoluci
 ---
 
 ### Actividad 2: Desarrollo Paralelo con Estrategia Git Flow
-- **Responsables:** Danilo & César
+- **Responsables:** Daniel, Cesar & Eddi
 - **Objetivo:** Simular trabajo en equipo concurrente modificando diferentes áreas del sistema.
 - **Ramas creadas a partir de `develop`:**
   - `feature/estudiantes`: Modificación de la interfaz para inscripción de alumnos (`53fdde2`).
@@ -76,7 +76,7 @@ Esta bitácora documenta de manera trazable cada acción, commit, rama, resoluci
 ---
 
 ### Actividad 6: Implementación de CI/CD con Jenkins
-- **Responsable:** César
+- **Responsables:** Daniel, Cesar & Eddi
 - **Objetivo:** Automatizar la validación del código y generación de artefactos tras cada commit.
 - **Acciones Realizadas:**
   1. **Despliegue y Orquestación:** Creación de `docker-compose.yml` para orquestar el servicio `jenkins/jenkins:lts` con volúmenes persistentes y puertos `8080:8080`, facilitando el levantamiento con un único comando (`docker compose up -d`).
@@ -85,7 +85,7 @@ Esta bitácora documenta de manera trazable cada acción, commit, rama, resoluci
      - **Stage 2 (Validación de Archivos):** Verificación obligatoria de existencia de `index.html`, `schema.sql` y `.gitignore`.
      - **Stage 3 (Integridad de Base de Datos):** Prueba sintáctica y ejecución en memoria del esquema SQLite.
      - **Stage 4 (Empaquetado de Artefactos):** Generación de paquete comprimido `dist/siga-build-${BUILD_NUMBER}.tar.gz` listo para despliegue.
-  3. **Documentación:** Generación de la guía de despliegue en [`README.md`](file:///c:/Users/cesar/Desktop/DMI/automatizacion/SIGA-Configuracion/README.md) y esta bitácora oficial.
+  3. **Documentación:** Generación de la guía de despliegue en [`README.md`](file:///c:/Users/cesar/Desktop/DMI/automatizacion/SIGA-Configuracion/README.md), [`CONTRIBUTING.md`](file:///c:/Users/cesar/Desktop/DMI/automatizacion/SIGA-Configuracion/CONTRIBUTING.md), [`LICENSE`](file:///c:/Users/cesar/Desktop/DMI/automatizacion/SIGA-Configuracion/LICENSE) y esta bitácora oficial.
 
 ---
 
@@ -93,12 +93,14 @@ Esta bitácora documenta de manera trazable cada acción, commit, rama, resoluci
 
 | ID Elemento | Nombre del Elemento | Ubicación | Responsable | Estado Actual |
 | :--- | :--- | :--- | :--- | :--- |
-| **CI-01** | Frontend Web | `index.html` | Danilo / César | Versión 2.0 (Estable) |
-| **CI-02** | Esquema Base de Datos | `schema.sql` | Danilo | Validado en SQLite |
+| **CI-01** | Frontend Web | `index.html` | Daniel / César | Versión 2.0 (Estable) |
+| **CI-02** | Esquema Base de Datos | `schema.sql` | Daniel | Validado en SQLite |
 | **CI-03** | Orquestación Docker | `docker-compose.yml` | César | Operativo (`docker compose up -d`) |
 | **CI-04** | Pipeline Automatizado | `Jenkinsfile` | César | Activo / Funcional |
-| **CI-05** | Guía de Configuración | `README.md` | Danilo, Eddi, César | Documentado |
-| **CI-06** | Bitácora de PGCS | `BITACORA.md` | Danilo, Eddi, César | Auditado |
+| **CI-05** | Términos de Licencia | `LICENSE` | Daniel, Cesar, Eddi | Licencia MIT |
+| **CI-06** | Guía de Contribución | `CONTRIBUTING.md` | Daniel, Cesar, Eddi | Reglas Git Flow y PR |
+| **CI-07** | Guía de Configuración | `README.md` | Daniel, Cesar, Eddi | Documentado |
+| **CI-08** | Bitácora de PGCS | `BITACORA.md` | Daniel, Cesar, Eddi | Auditado |
 
 ---
 
