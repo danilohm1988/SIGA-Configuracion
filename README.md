@@ -2,7 +2,7 @@
 
 Proyecto desarrollado para la asignatura **Gestión de la Configuración del Software (PGCS)** - 8.º Semestre, Ingeniería de Sistemas.  
 Docente: **Ing. Deiby Torrez Maldonado**  
-Equipo de Desarrollo: **Danilo & César**
+Equipo de Desarrollo: **Danilo, Eddi & Cesar**
 
 ---
 

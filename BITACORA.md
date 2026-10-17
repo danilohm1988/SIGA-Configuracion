@@ -3,7 +3,7 @@
 **Proyecto:** SIGA - Sistema Integrado de Gestión Académica  
 **Materia:** Gestión de la Configuración del Software · 8.º Semestre  
 **Docente:** Ing. Deiby Torrez Maldonado  
-**Equipo de Trabajo:** Danilo, Eddi & César  
+**Equipo de Trabajo:** Danilo, Eddi & Cesar  
 **Repositorio GitHub:** [https://github.com/danilohm1988/SIGA-Configuracion](https://github.com/danilohm1988/SIGA-Configuracion)  
 
 ---
